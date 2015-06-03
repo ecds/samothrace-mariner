@@ -1,0 +1,15 @@
+*.pyc
+test-results/
+doc/_build/
+dist/
+build/
+
+samothrace/localsettings.py
+samothrace/settings.py
+venv
+admin
+bootstrap
+samothrace/local_my.cnf
+samothrace/static
+samothrace/templates
+

@@ -1,0 +1,8 @@
+-r common.txt
+
+fabric
+sphinx
+coverage
+unittest-xml-reporting
+unittest2
+django-fixture-magic # advanced fixture dumping

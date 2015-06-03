@@ -1,0 +1,9 @@
+Django>=1.7,<1.8
+mysql-python
+django-admin-bootstrapped<=2.4
+django-bootstrap3
+pillow
+   
+#partial dates
+git+git://github.com/dracos/django-date-extensions.git
+six
