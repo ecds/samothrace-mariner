@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce import models as tinymce_models
 
 
 class SiteManager(models.Manager):
@@ -20,7 +21,8 @@ class Site(models.Model):
     elevation = models.IntegerField(max_length=4, blank=True, null=True)
     pleiades_url = models.URLField(max_length=200, blank=True)
     perseus_url = models.URLField(max_length=200, blank=True)
-    caption = models.TextField(blank=True)
+    caption = models.CharField(max_length=255, blank=True)
+    paragraph = tinymce_models.HTMLField(blank=True)
     
     # generate natural key
     def natural_key(self):

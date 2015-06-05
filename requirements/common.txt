@@ -3,6 +3,8 @@ mysql-python
 django-admin-bootstrapped<=2.4
 django-bootstrap3
 pillow
+djangorestframework
+django-tinymce
    
 #partial dates
 git+git://github.com/dracos/django-date-extensions.git
