@@ -6,7 +6,7 @@ build/
 
 samothrace/localsettings.py
 venv
-admin
+#admin
 bootstrap
 samothrace/local_my.cnf
 samothrace/static
