@@ -5,6 +5,7 @@ dist/
 build/
 
 samothrace/localsettings.py
+samothrace/settings.py
 venv
 #admin
 bootstrap

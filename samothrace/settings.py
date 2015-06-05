@@ -30,7 +30,7 @@ INSTALLED_APPS = (
     'samothrace.apps.people',
     'samothrace.apps.inscriptions',
     'rest_framework',
-    'tinymce',
+    #'tinymce',
 
     # uncomment in your greatest time of need!
     #NOTE: as of 8/12/2014 the pypi version does not support Natural Keys
@@ -97,7 +97,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-# STATICFILES_DIRS = ( os.path.join('static'), )
+STATICFILES_DIRS = ( os.path.join('static'), )
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
