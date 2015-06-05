@@ -8,7 +8,7 @@ samothrace/localsettings.py
 samothrace/settings.py
 venv
 #admin
-bootstrap
+#bootstrap
 samothrace/local_my.cnf
 samothrace/static
 samothrace/templates
