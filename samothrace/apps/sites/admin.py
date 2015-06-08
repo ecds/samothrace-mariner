@@ -67,14 +67,14 @@ admin.site.register(Site, SiteAdmin)
 
 class MarkerAdmin(admin.ModelAdmin):
     list_display = ['marker_id', 'site', 'type']
-    search_fields = ['marker_id', 'site', 'type']
+    search_fields = ['marker_id', 'type']
 
 admin.site.register(Marker, MarkerAdmin)
 
 
 class KoinaAdmin(admin.ModelAdmin):
     list_display = ['koina_id', 'site', 'inscription', 'member_count', 'activities']
-    search_fields = ['koina_id', 'site', 'inscription', 'activities']
+    search_fields = ['koina_id', 'activities']
 
 
 admin.site.register(Koina, KoinaAdmin)
