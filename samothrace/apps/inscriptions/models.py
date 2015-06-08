@@ -24,7 +24,7 @@ class Inscription(models.Model):
     end_date = models.IntegerField(max_length=4, blank=True, null=True)
     date_info = models.CharField(max_length = 255, blank=True)
     picture = models.ImageField(upload_to='inscriptions', max_length=100, blank=True, null=True)
-    incription_text = models.TextField(blank=True)
+    inscription_text = models.TextField(blank=True)
     bibliography = models.TextField(blank=True)
     comments = models.TextField(blank=True)
     dating_certainty = models.TextField(blank=True)
