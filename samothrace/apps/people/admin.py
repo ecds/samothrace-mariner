@@ -22,7 +22,7 @@ class PriesthoodInline(LinkedInline):
 
 class IndividualAdmin(admin.ModelAdmin):
     list_display = ['individual_id', 'name', 'patronym', 'inscription', 'site']
-    search_fields = ['individual_id', 'name', 'patronym', 'inscription', 'site', 'site_origin', 'title', 'comments']
+    search_fields = ['individual_id', 'name', 'patronym', 'title', 'comments']
     inlines =[
         RoleInline
     ]
@@ -32,7 +32,7 @@ admin.site.register(Individual, IndividualAdmin)
 
 class RoleAdmin(admin.ModelAdmin):
     list_display = ['role_id', 'name', 'individual']
-    search_fields = ['role_id', 'name', 'individual', 'comments']
+    search_fields = ['role_id', 'name', 'comments']
     inlines =[
         PriesthoodInline
     ]
@@ -42,7 +42,7 @@ admin.site.register(Role, RoleAdmin)
 
 class PriesthoodAdmin(admin.ModelAdmin):
     list_display = ['priesthood_id', 'name', 'title', 'location', ]
-    search_fields = ['priesthood_id', 'name', 'title', 'inscription', 'location', 'deity', 'role']
+    search_fields = ['priesthood_id', 'name', 'title', 'deity']
     inlines =[
         
     ]
