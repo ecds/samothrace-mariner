@@ -4,7 +4,7 @@ from rest_framework import serializers
 class SiteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Site
-        fields = ('site_id', 'name', 'mod_name', 'alt_name', 'latitude', 'longitude', 'elevation', 'pleiades_url', 'perseus_url', 'caption')
+        fields = ('site_id', 'name', 'mod_name', 'alt_name', 'latitude', 'longitude', 'elevation', 'pleiades_url', 'perseus_url', 'caption', 'paragraph')
 
 
 class MarkerSerializer(serializers.HyperlinkedModelSerializer):
