@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     ##################################
     'samothrace.apps.admin',
     'samothrace.apps.sites',
@@ -31,6 +32,9 @@ INSTALLED_APPS = (
     'samothrace.apps.inscriptions',
     'rest_framework',
     'tinymce',
+    'eultheme',
+    'widget_tweaks',
+    'downtime',
 
     # uncomment in your greatest time of need!
     #NOTE: as of 8/12/2014 the pypi version does not support Natural Keys
@@ -97,10 +101,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-# STATICFILES_DIRS = ( os.path.join('static'), )
+STATICFILES_DIRS = ( os.path.join('static'), )
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_ROOT = ''
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'

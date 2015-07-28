@@ -1,6 +1,24 @@
 {% extends "admin/base.html" %}
 {% load i18n admin_reorder_tag %}
 
+{% block extrahead %}
+<script type="text/javascript">
+    tinyMCE.init({
+        mode : "textareas",
+            setup : function(ed)
+            {
+                // set the editor font size
+                ed.onInit.add(function(ed)
+                {
+                ed.getBody().style.fontSize = '12px';
+                });
+            },
+            });
+</script>
+
+{% endblock %}
+
+
    {% block extrastyle %}
      <style type="text/css">
        .breadcrumb { margin: 70px 0px 10px 0px !important; }

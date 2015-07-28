@@ -23,10 +23,15 @@ router.register(r'priesthoods', PriesthoodViewSet)
 
 
 urlpatterns = patterns('',
-     url(r'^$', RedirectView.as_view(url='/admin', permanent=False)), # temp redirect to admin
+     #url(r'^$', RedirectView.as_view(url='/admin', permanent=False)), # temp redirect to admin
+     # until we have a public-facing site homepage, redirect to sites
+    url(r'^$', RedirectView.as_view(url='/sites/', permanent=False),
+        name='site-index'),
+    url(r'^sites/', include('samothrace.apps.sites.urls',
+        namespace='journals')),
      url(r'^admin/', include(admin.site.urls) ),
      url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-     url(r'^', include(router.urls)),
+     url(r'^api/', include(router.urls)),
      url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
 

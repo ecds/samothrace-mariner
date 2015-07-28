@@ -5,7 +5,11 @@ django-bootstrap3
 pillow
 djangorestframework
 django-tinymce
-   
+django-widget-tweaks
+django-downtime
+
 #partial dates
 git+git://github.com/dracos/django-date-extensions.git
 six
+
+-e git://github.com/emory-libraries/django-eultheme.git#egg=django-eultheme

@@ -1,3 +1,4 @@
+from django.views.generic import View, ListView, DetailView
 from samothrace.apps.sites.models import Site, Marker, Koina
 from rest_framework import viewsets
 from samothrace.apps.sites.serializers import SiteSerializer, MarkerSerializer, KoinaSerializer
@@ -16,3 +17,7 @@ class MarkerViewSet(viewsets.ModelViewSet):
 class KoinaViewSet(viewsets.ModelViewSet):
     queryset = Koina.objects.all()
     serializer_class = KoinaSerializer
+
+class SiteList(ListView):
+    'List all Journals'
+    model = Site
