@@ -25,14 +25,14 @@ router.register(r'priesthoods', PriesthoodViewSet)
 urlpatterns = patterns('',
      #url(r'^$', RedirectView.as_view(url='/admin', permanent=False)), # temp redirect to admin
      # until we have a public-facing site homepage, redirect to sites
-    url(r'^$', RedirectView.as_view(url='/sites/', permanent=False),
-        name='site-index'),
-    url(r'^sites/', include('samothrace.apps.sites.urls',
-        namespace='journals')),
-     url(r'^admin/', include(admin.site.urls) ),
-     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-     url(r'^api/', include(router.urls)),
-     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^$', RedirectView.as_view(url='/sites/', permanent=False), name='site-index'),
+    url(r'^sites/', include('samothrace.apps.sites.urls', namespace='sites')),
+    #url(r'^inscriptions/', include('samothrace.apps.inscriptions.urls', namespace='inscriptions')),
+    #url(r'^people/', include('samothrace.apps.people.urls', namespace='people')),
+    url(r'^admin/', include(admin.site.urls) ),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 )
 
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
