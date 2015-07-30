@@ -3,48 +3,100 @@
 
 {% block content %}
 <ol class="breadcrumb">
-  <li><a href="{% url 'sites:list' %}">Sites</a></li>
-  <li class="active">{{ site.name }}</li>
+	<li><a href="{% url 'sites:list' %}">Sites</a></li>
+	<li class="active">{{ site.name }}</li>
 </ol>
 
 <div class="container">
 
-<h1>{{ site.name }}</h1>
+	<h1>{{ site.name }}</h1>
 
-<ul class="record">
-  
-{% if site.mod_name %}
-<li><span class="record-label">Modern name:</span> {{site.mod_name}}</li>
-{% endif %}
+	<ul class="record">
 
-{% if site.alt_name %}
-<li><span class="record-label">Alternative name:</span> {{site.alt_name}}</li>
-{% endif %}
+		{% if site.mod_name %}
+		<li><span class="record-label">Modern name:</span> {{site.mod_name}}</li>
+		{% endif %}
 
-{% if site.latitude %}
-<li><span class="record-label">Latitude:</span> {{site.latitude}}</li>
-{% endif %}
+		{% if site.alt_name %}
+		<li><span class="record-label">Alternative name:</span> {{site.alt_name}}</li>
+		{% endif %}
 
-{% if site.longitude %}
-<li><span class="record-label">Longitude:</span> {{site.longitude}}</li>
-{% endif %}
+		{% if site.latitude %}
+		<li><span class="record-label">Latitude:</span> {{site.latitude}}</li>
+		{% endif %}
 
-{% if site.elevation %}
-<li><span class="record-label">Elevation:</span> {{site.elevation}}</li>
-{% endif %}
+		{% if site.longitude %}
+		<li><span class="record-label">Longitude:</span> {{site.longitude}}</li>
+		{% endif %}
 
-</ul>
+		{% if site.elevation %}
+		<li><span class="record-label">Elevation:</span> {{site.elevation}}</li>
+		{% endif %}
 
-{% if site.pleiades_url or site.perseus_url %}
-<p>Get more information on external websites:<br>
-{% if site.pleiades_url %}
-<a href="{{site.pleiades_url}}" target="_blank">Pleides</a><br>
-{% endif %}
-{% if site.perseus_url %}}
-<a href="{{site.perseus_url}}" target="_blank">Perseus</a>
-{% endif %}
-</p>
-{% endif %}
+	</ul>
+
+	{% if site.pleiades_url or site.perseus_url %}
+	<p>Get more information on external websites:<br>
+		{% if site.pleiades_url %}
+		<a href="{{site.pleiades_url}}" target="_blank">Pleides</a><br>
+		{% endif %}
+		{% if site.perseus_url %}}
+		<a href="{{site.perseus_url}}" target="_blank">Perseus</a>
+		{% endif %}
+	</p>
+	{% endif %}
+
+	
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#individuals" aria-controls="individuals" role="tab" data-toggle="tab">People</a></li>
+		<li role="presentation"><a href="#inscriptions" aria-controls="inscriptions" role="tab" data-toggle="tab">Inscriptions</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="individuals">
+			<table class="table">
+				<thead>
+					<th>Name</th>
+					<th>Patronym</th>
+					<th>Title</th>
+				</thead>
+				<tbody>
+					{% for individual in individuals %}
+					<tr>
+						<td>{{individual.name}}</td>
+						<td>{{individual.patronym}}</td>
+						<td>{{individual.title}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="inscriptions">
+			<table class="table">
+				<thead>
+					<th>Source</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+				</thead>
+				<tbody>
+					{% for inscription in inscriptions %}
+					<tr>
+						<td>{{inscription.source}}</td>
+						<td>{{inscription.start_date}}</td>
+						<td>{{inscription.end_date}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
 
 </div>
 {% endblock %}

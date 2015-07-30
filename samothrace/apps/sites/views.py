@@ -1,16 +1,26 @@
+from django.db.models import Q
 from django.views.generic import View, ListView, DetailView
 from samothrace.apps.sites.models import Site, Marker, Koina
 from rest_framework import viewsets
 from samothrace.apps.sites.serializers import SiteSerializer, MarkerSerializer, KoinaSerializer
+from samothrace.apps.people.models import Individual
+from samothrace.apps.inscriptions.models import Inscription
 
 
 class SiteList(ListView):
     'List all Journals'
     model = Site
 
+
 class SiteDetail(DetailView):
     'Display details for a single site'
     model = Site
+
+    def get_context_data(self, **kwargs):
+        context = super(SiteDetail, self).get_context_data(**kwargs)
+        context["individuals"] = Individual.objects.filter(site=self.object.pk)
+        context["inscriptions"] = Inscription.objects.filter(find_spot=self.object.pk)
+        return context
 
 
 
