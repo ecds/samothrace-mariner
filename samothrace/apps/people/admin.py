@@ -31,8 +31,8 @@ admin.site.register(Individual, IndividualAdmin)
 
 
 class RoleAdmin(admin.ModelAdmin):
-    list_display = ['role_id', 'name', 'individual']
-    search_fields = ['role_id', 'name', 'individual__name', 'comments']
+    list_display = ['role_id', 'title', 'individual']
+    search_fields = ['role_id', 'title', 'individual__name', 'comments']
     inlines =[
         PriesthoodInline
     ]
