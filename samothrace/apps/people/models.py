@@ -1,5 +1,4 @@
 from django.db import models
-from decimal import Decimal
 
 from samothrace.apps.inscriptions.models import Inscription
 from samothrace.apps.sites.models import Site
@@ -51,19 +50,17 @@ class Role(models.Model):
 
     role_id = models.CharField(max_length=10, primary_key=True, verbose_name="Role ID")
     individual = models.ForeignKey('Individual')
-    title = models.CharField(max_length=255)
-    certainty = models.DecimalField(max_digits=3, decimal_places=2, \
-                verbose_name="certainty", default=Decimal(1.00), help_text="Enter a value between 0 and 1.")
+    name = models.CharField(max_length=255)
     comments = models.TextField(blank=True)
 
     def natural_key(self):
-        return self.title
+        return self.name
     
     def __unicode__(self):
-        return '%s %s' % (self.id, self.title)
+        return '%s %s' % (self.id, self.name)
     
     class Meta:
-        ordering = ['title']
+        ordering = ['name']
 
 
 class PriesthoodManager(models.Manager):
