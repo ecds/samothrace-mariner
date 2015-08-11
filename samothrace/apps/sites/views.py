@@ -17,7 +17,6 @@ class SiteDetail(DetailView):
     model = Site
 
     def get_context_data(self, **kwargs):
-        #h/t http://stackoverflow.com/a/14936328
         context = super(SiteDetail, self).get_context_data(**kwargs)
         context["individuals"] = Individual.objects.filter(site=self.object.pk)
         context["inscriptions"] = Inscription.objects.filter(find_spot=self.object.pk)
