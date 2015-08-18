@@ -23,7 +23,6 @@ router.register(r'priesthoods', PriesthoodViewSet)
 
 
 urlpatterns = patterns('',
-     #url(r'^$', RedirectView.as_view(url='/admin', permanent=False)), # temp redirect to admin
      # until we have a public-facing site homepage, redirect to sites
     url(r'^$', RedirectView.as_view(url='/sites/', permanent=False), name='site-index'),
     url(r'^sites/', include('samothrace.apps.sites.urls', namespace='sites')),

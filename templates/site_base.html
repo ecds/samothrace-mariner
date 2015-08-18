@@ -20,7 +20,7 @@ by default; use page_rdf_type to override with a webpage subclass.
     <link href="{% static 'eultheme/css/font-awesome.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/selectize.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/eultheme.css' %}" rel="stylesheet"/>
-    {% block css %}{% endblock %} {# add any local css here #}
+    {% block css %}<link href="{% static 'css/samothrace.css' %}" rel="stylesheet"/>{% endblock %} {# add any local css here #}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,8 +85,7 @@ by default; use page_rdf_type to override with a webpage subclass.
         <div class="container">
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li><a class="site-title" href="{% url 'site-index'
-            %}">{% block nav-title %}Samothracian Networks{% endblock %}</a></li>
+              <li><a class="site-title" href="{% url 'site-index' %}">{% block nav-title %}Samothracian Networks{% endblock %}</a></li>
               {% block navlinks %}{% endblock %}
               {% block admin-navlink %} {# adding block to allow override/disable #}
                 {% if user.is_staff %}
@@ -95,7 +94,7 @@ by default; use page_rdf_type to override with a webpage subclass.
               {% endblock %}
             </ul>
 
-            {% block navbar-extra %}{% endblock %}
+            {% block navbar-extra %}<a href="{% url 'admin:index' %}">Admin</a>{% endblock %}
           </div><!--/.nav-collapse -->
         </div>
       </div>
