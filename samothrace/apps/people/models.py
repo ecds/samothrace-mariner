@@ -72,7 +72,8 @@ class Priesthood(models.Model):
 
     objects = PriesthoodManager()
 
-    priesthood_id = models.CharField(max_length=255, primary_key=True, verbose_name="Priesthood ID")
+    priesthood_id = models.CharField(max_length=255, primary_key=True, \
+                                     verbose_name="Priesthood ID")
     name = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=255, blank=True)
     inscription = models.ManyToManyField(Inscription, blank=True, null=True)
@@ -83,7 +84,7 @@ class Priesthood(models.Model):
     att_honor = models.CharField(max_length=255, blank=True)
     cer_ritual = models.CharField(max_length=255, blank=True)
     comments = models.TextField(blank=True)
-    role = models.ForeignKey('Role', blank=True, null=True) # temporarily optional
+    role = models.ForeignKey('Role', blank=True, null=True) # temp optional
 
     def natural_key(self):
         return self.name

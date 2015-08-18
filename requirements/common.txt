@@ -12,4 +12,4 @@ django-downtime
 git+git://github.com/dracos/django-date-extensions.git
 six
 
--e git://github.com/emory-libraries/django-eultheme.git#egg=django-eultheme
+-e git://github.com/emory-libraries/django-eultheme.git#egg=eultheme
