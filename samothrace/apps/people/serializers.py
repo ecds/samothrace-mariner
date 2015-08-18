@@ -4,13 +4,13 @@ from rest_framework import serializers
 class IndividualSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Individual
-        fields = ('individual_id', 'name', 'patronym', 'inscription', 'site', 'title', 'comments', 'site_origin')
+        fields = ('individual_id', 'name', 'patronym', 'inscription', 'site', 'comments', 'site_origin')
 
 
 class RoleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Role
-        fields = ('role_id', 'individual', 'name', 'comments')
+        fields = ('role_id', 'individual', 'title', 'certainty', 'comments')
 
     
 class PriesthoodSerializer(serializers.HyperlinkedModelSerializer):
