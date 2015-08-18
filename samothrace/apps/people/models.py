@@ -19,7 +19,8 @@ class Individual(models.Model):
     patronym = models.CharField(max_length=255, blank=True)
     inscription = models.ForeignKey(Inscription)
     site = models.ForeignKey(Site, blank=True, null=True)
-    title = models.CharField(max_length=255, blank=True)
+    # title data moved to Role table
+    # title = models.CharField(max_length=255, blank=True)
     comments = models.TextField(blank=True)
     site_origin = models.ForeignKey(Site, related_name='site_origin', blank=True, null=True)
     
