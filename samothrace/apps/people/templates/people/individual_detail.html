@@ -1,0 +1,24 @@
+{% extends 'site_base.html' %}
+{# display details for a single site #}
+
+{% block content %}
+<ol class="breadcrumb">
+  <li><a href="{% url 'people:list' %}">People</a></li>
+  <li class="active">{{ individual.name }}</li>
+</ol>
+
+<div class="container">
+
+  <h1>{{ individual.name }}</h1>
+
+  <ul class="record">
+<li><span class="record-label">Name:</span> {{individual.name}} {{individual.patronym}}
+  {% if individual.site_origin %} of {{individual.site_origin}} {% endif %}
+</li>
+<li><span class="record-label">Site: 
+  <a href="{% url 'sites:site' individual.site.pk %}">{{individual.site.pk}}</a>
+</li>
+  </ul
+
+ </div>
+{% endblock %}

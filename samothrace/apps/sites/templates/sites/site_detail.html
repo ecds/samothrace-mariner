@@ -36,11 +36,10 @@
 	</ul>
 
 	{% if site.pleiades_url or site.perseus_url %}
-	<p>Get more information on external websites:<br>
-		{% if site.pleiades_url %}
-		<a href="{{site.pleiades_url}}" target="_blank">Pleides</a><br>
+	<p>{% if site.pleiades_url %}
+		<a href="{{site.pleiades_url}}" target="_blank">Pleides</a> | 
 		{% endif %}
-		{% if site.perseus_url %}}
+		{% if site.perseus_url %}
 		<a href="{{site.perseus_url}}" target="_blank">Perseus</a>
 		{% endif %}
 	</p>

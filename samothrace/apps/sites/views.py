@@ -8,7 +8,7 @@ from samothrace.apps.inscriptions.models import Inscription
 
 
 class SiteList(ListView):
-    'List all Journals'
+    'List all Sites'
     model = Site
 
 

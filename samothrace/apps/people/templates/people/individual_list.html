@@ -1,0 +1,19 @@
+{% extends 'site_base.html' %}
+{# list all people #}
+
+{% block content %}
+<div class="container">
+<h1>Individuals</h1>
+
+<div class="columns">
+<ul>
+{% for individual in object_list %}
+    <li>
+        <a href="{% url 'people:individual' individual.pk %}">{{ individual.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+</div>
+
+</div>
+{% endblock %}

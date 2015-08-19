@@ -1,3 +1,4 @@
+from django.views.generic import View, ListView, DetailView
 from samothrace.apps.people.models import Individual, Role, Priesthood
 from rest_framework import viewsets
 from samothrace.apps.people.serializers import IndividualSerializer, RoleSerializer, PriesthoodSerializer
@@ -16,3 +17,14 @@ class RoleViewSet(viewsets.ModelViewSet):
 class PriesthoodViewSet(viewsets.ModelViewSet):
     queryset = Priesthood.objects.all()
     serializer_class = PriesthoodSerializer
+
+
+class IndividualList(ListView):
+    'List all Individuals'
+    model = Individual
+
+
+class IndividualDetail(DetailView):
+    'Display details for a single site'
+    model = Individual
+
