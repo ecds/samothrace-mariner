@@ -34,7 +34,7 @@ admin.site.register(Individual, IndividualAdmin)
 
 
 class RoleAdmin(admin.ModelAdmin):
-    list_display = ['role_id', 'title', 'individual']
+    list_display = ['role_id', 'title', 'certainty', 'individual']
     search_fields = ['role_id', 'title', 'individual__name', 'comments']
     list_filter = ['title']
     inlines =[
