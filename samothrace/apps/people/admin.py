@@ -25,7 +25,7 @@ class PriesthoodInline(admin.TabularInline):
 
 class IndividualAdmin(admin.ModelAdmin):
     list_display = ['individual_id', 'name', 'patronym', 'inscription', 'site']
-    search_fields = ['individual_id', 'name', 'patronym', 'inscription__name', 'title', 'comments']
+    search_fields = ['individual_id', 'name', 'patronym', 'inscription__name', 'comments']
     inlines =[
         RoleInline
     ]
