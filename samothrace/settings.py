@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'samothrace.apps.sites',
     'samothrace.apps.people',
     'samothrace.apps.inscriptions',
+    'samothrace.apps.argonautica',
     'rest_framework',
     'tinymce',
 

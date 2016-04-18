@@ -23,6 +23,7 @@ class Site(models.Model):
     perseus_url = models.URLField(max_length=200, blank=True)
     caption = models.CharField(max_length=255, blank=True)
     paragraph = tinymce_models.HTMLField(blank=True)
+    natural_marker = models.CharField(max_length=255, blank=True)
     
     # generate natural key
     def natural_key(self):
@@ -71,7 +72,22 @@ class Koina(models.Model):
             verbose_name_plural = 'Koina'
 
 
-    
-    
 
+
+class Ancient_Sources(models.Model):
+    '''historical references to site'''
+
+    cityname = models.ForeignKey(Site, blank=True, db_column="name")
+    author = models.CharField(max_length=255, blank=True, null=True)
+    reference = models.CharField(max_length=255, blank=True, null=True, help_text="Text and section")
+    author_date = models.CharField(max_length=255, blank=True, null=True)
+    language = models.CharField(max_length=255, blank=True, null=True)
+    citation_url = models.URLField(max_length=200, blank=True, null=True)
+    bibliographic_reference = models.CharField(max_length=255, blank=True, null=True, help_text="Sources without available URL's")
     
+    class Meta:
+      verbose_name = 'Ancient Source'
+      verbose_name_plural = 'Ancient Sources'
+    
+    def __unicode__(self):
+        return '%s, %s' % (self.cityname, self.author)

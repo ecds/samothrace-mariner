@@ -79,7 +79,7 @@ class Priesthood(models.Model):
     priesthood_id = models.CharField(max_length=255, primary_key=True, verbose_name="Priesthood ID")
     name = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=255, blank=True)
-    inscription = models.ManyToManyField(Inscription, blank=True, null=True)
+    inscription = models.ManyToManyField(Inscription, blank=True)
     location = models.ForeignKey(Site)
     deity_id = models.CharField(max_length=10, blank=True)
     deity = models.CharField(max_length=255, blank=True)

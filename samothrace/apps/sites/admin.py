@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.conf import settings
 
 from samothrace.apps.admin.models import LinkedInline, get_admin_url
-from samothrace.apps.sites.models import Site, Marker, Koina
+from samothrace.apps.sites.models import Site, Marker, Koina, Ancient_Sources
 from samothrace.apps.inscriptions.models import Inscription
 from samothrace.apps.people.models import Individual
 
@@ -54,7 +54,7 @@ class SiteAdmin(admin.ModelAdmin):
       js = (settings.STATIC_URL + 'js/admin/collapseTabularInlines.js',)
       css = { "all" : (settings.STATIC_URL +"css/admin/admin_styles.css",) }
     list_display = ['site_id', 'name', 'mod_name', 'pleiades_url', 'perseus_url']
-    search_fields = ['site_id', 'name', 'mod_name', 'alt_name']
+    search_fields = ['site_id', 'name', 'mod_name', 'alt_name', 'natural_marker']
     inlines = [
         InscriptionInline,
         #IndividualInline,
@@ -78,3 +78,4 @@ class KoinaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Koina, KoinaAdmin)
+admin.site.register(Ancient_Sources)
