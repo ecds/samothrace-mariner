@@ -14,6 +14,6 @@ from django.template import RequestContext
 
 
 def Argo_Edges(request):
-    ArgoEdgeData = Stops.objects.values('id', 'crew__name', 'crew__origin__name', 'place_of_stop__name').filter(type_of_stop='direct')
+    ArgoEdgeData = Stops.objects.values('id', 'crew__name', 'crew__origin__name', 'crew__origin__latitude', 'crew__origin__longitude', 'place_of_stop__name', 'place_of_stop__latitude', 'place_of_stop__longitude').filter(type_of_stop='direct')
     return render_to_csv_response(ArgoEdgeData)
 
