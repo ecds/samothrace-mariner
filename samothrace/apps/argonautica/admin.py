@@ -9,6 +9,7 @@ class PersonAdmin(admin.ModelAdmin):
 class StopsAdmin(admin.ModelAdmin):
     list_display = ['type_of_stop','line_number','ritual']
     search_fields = ['type_of_stop','line_number','ritual']
+    filter_horizontal = ['crew']
     
 class Places_ReferencedAdmin(admin.ModelAdmin):
     list_display = ['type_of_reference','line_number','ritual']
