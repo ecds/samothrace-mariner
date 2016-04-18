@@ -30,7 +30,7 @@ class Stops(models.Model):
     crew = models.ManyToManyField('Person', blank=True, null=True, related_name='crew', help_text="People on the Ship Manifest at the time")
     ritual = models.CharField(max_length=255, blank=True, null=True)
     ritual_deity = models.CharField(max_length=255, blank=True, null=True)
-    ritual_people = models.ForeignKey('Person', blank=True, null=True, related_name='ritualpeople', help_text="People associated with the ritual")
+    ritual_people = models.ManyToManyField('Person', blank=True, null=True, related_name='ritualpeople', help_text="People associated with the ritual")
 
     def natural_key(self):
         return (self.line_number)
@@ -55,7 +55,7 @@ class Places_Referenced(models.Model):
     next_place = models.ForeignKey(Site, blank=True, related_name='next2')
     ritual = models.CharField(max_length=255, blank=True, null=True)
     ritual_deity = models.CharField(max_length=255, blank=True, null=True)
-    ritual_people = models.ForeignKey('Person', blank=True, null=True, related_name='ritualpeople2', help_text="People associated with the ritual")
+    ritual_people = models.ManyToManyField('Person', blank=True, null=True, related_name='ritualpeople2', help_text="People associated with the ritual")
 
     def natural_key(self):
         return (self.line_number)

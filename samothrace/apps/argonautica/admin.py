@@ -9,11 +9,12 @@ class PersonAdmin(admin.ModelAdmin):
 class StopsAdmin(admin.ModelAdmin):
     list_display = ['type_of_stop','line_number','ritual']
     search_fields = ['type_of_stop','line_number','ritual']
-    filter_horizontal = ['crew']
+    filter_horizontal = ['crew', 'ritual_people']
     
 class Places_ReferencedAdmin(admin.ModelAdmin):
     list_display = ['type_of_reference','line_number','ritual']
     search_fields = ['type_of_reference','line_number','ritual']
+    filter_horizontal = ['ritual_people']
     
 
 admin.site.register(Person, PersonAdmin)
