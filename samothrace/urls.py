@@ -34,4 +34,5 @@ urlpatterns = patterns('',
      url(r'^ArgoEdgeData/$', Argo_Edges, name="Argo Networks"),
 )
 
+urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
