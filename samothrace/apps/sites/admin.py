@@ -5,6 +5,9 @@ from samothrace.apps.admin.models import LinkedInline, get_admin_url
 from samothrace.apps.sites.models import Site, Marker, Koina, Ancient_Sources
 from samothrace.apps.inscriptions.models import Inscription
 from samothrace.apps.people.models import Individual
+from import_export import resources, fields
+from import_export.admin import ImportExportModelAdmin
+from import_export.widgets import ForeignKeyWidget, ManyToManyWidget
 
 
 #--More than one foreign key with Individual
@@ -76,6 +79,20 @@ class KoinaAdmin(admin.ModelAdmin):
     list_display = ['koina_id', 'site', 'inscription', 'member_count', 'activities']
     search_fields = ['koina_id', 'site__name', 'inscription__name', 'activities']
 
+class Ancient_SourcesResource(resources.ModelResource):
+    cityname = fields.Field(
+        column_name='cityname',
+        attribute='cityname',
+        widget=ForeignKeyWidget(Site, 'name'))
+    class Meta:
+        model = Ancient_Sources
+        fields = ('id','cityname', 'author', 'reference', 'author_date', 'language', 'citation_url', 'bibliographic_reference')
 
+class Ancient_SourcesAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = Ancient_SourcesResource
+    pass     
+    list_display = ['author', 'reference', 'author_date', 'language']
+    search_fields = ['author', 'reference', 'author_date', 'language']
+    
 admin.site.register(Koina, KoinaAdmin)
-admin.site.register(Ancient_Sources)
+admin.site.register(Ancient_Sources, Ancient_SourcesAdmin)

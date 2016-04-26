@@ -90,4 +90,4 @@ class Ancient_Sources(models.Model):
       verbose_name_plural = 'Ancient Sources'
     
     def __unicode__(self):
-        return '%s, %s' % (self.cityname, self.author)
+        return '%s' % (self.author)
