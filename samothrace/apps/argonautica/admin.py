@@ -31,8 +31,29 @@ class StopsResource(resources.ModelResource):
         fields = ('id','type_of_stop', 'line_number','place_of_stop','previous_place','next_place','ritual','ritual_deity','argonautica_edition','crew','ritual_people')
         
 class Places_ReferencedResource(resources.ModelResource):
+    place_referenced = fields.Field(
+        column_name='place_referenced',
+        attribute='place_referenced',
+        widget=ForeignKeyWidget(Site, 'name'))
+    previous_place = fields.Field(
+        column_name='previous_place',
+        attribute='previous_place',
+        widget=ForeignKeyWidget(Site, 'name'))
+    next_place = fields.Field(
+        column_name='next_place',
+        attribute='next_place',
+        widget=ForeignKeyWidget(Site, 'name'))
+    referenced_by = fields.Field(
+        column_name='referenced_by',
+        attribute='referenced_by',
+        widget=ForeignKeyWidget(Person, 'name'))
+    ritual_people = fields.Field(
+        column_name='ritual_people',
+        attribute='ritual_people',
+        widget=ManyToManyWidget(Person, separator=', ', field='name'))
     class Meta:
         model = Places_Referenced
+        fields = ('id','place_referenced', 'line_number', 'type_of_reference', 'referenced_by', 'previous_place', 'next_place', 'ritual', 'ritual_deity', 'ritual_people', 'argonautica_edition')
         
 class PersonAdmin(admin.ModelAdmin):
     list_display = ['name']
