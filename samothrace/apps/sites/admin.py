@@ -55,7 +55,8 @@ class SiteResource(resources.ModelResource):
     class Meta:
         model = Site
         fields = ('site_id','name', 'mod_name', 'alt_name', 'latitude', 'longitude', 'elevation', 'pleiades_url' , 'perseus_url', 'caption', 'paragraph', 'natural_marker')
-
+        import_id_fields = ('site_id','name')
+        
 class SiteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = SiteResource
     pass     

@@ -14,7 +14,7 @@ class Person(models.Model):
         return (self.name)
 
     def __unicode__(self):
-        return self.name
+        return self.name or u''
 
     class Meta:
         ordering = ['name']
@@ -37,7 +37,7 @@ class Stops(models.Model):
         return (self.line_number)
 
     def __unicode__(self):
-        return '%s %s' % (self.line_number, self.type_of_stop)
+        return '%s %s' % (self.line_number, self.type_of_stop) or u''
 
     class Meta:
         ordering = ['line_number']
@@ -63,7 +63,7 @@ class Places_Referenced(models.Model):
         return (self.line_number)
 
     def __unicode__(self):
-        return '%s %s' % (self.line_number, self.type_of_reference)
+        return '%s %s' % (self.line_number, self.type_of_reference) or u''
 
     class Meta:
         ordering = ['line_number']
