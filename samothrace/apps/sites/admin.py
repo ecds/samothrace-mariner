@@ -51,8 +51,14 @@ class InscriptionInline(LinkedInline):
     can_delete = False
 
     
+class SiteResource(resources.ModelResource):
+    class Meta:
+        model = Site
+        fields = ('site_id','name', 'mod_name', 'alt_name', 'latitude', 'longitude', 'elevation', 'pleiades_url' , 'perseus_url', 'caption', 'paragraph', 'natural_marker')
 
-class SiteAdmin(admin.ModelAdmin):
+class SiteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = SiteResource
+    pass     
     class Media:
       js = (settings.STATIC_URL + 'js/admin/collapseTabularInlines.js',)
       css = { "all" : (settings.STATIC_URL +"css/admin/admin_styles.css",) }

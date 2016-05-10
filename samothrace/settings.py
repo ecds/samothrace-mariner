@@ -32,6 +32,8 @@ INSTALLED_APPS = (
     'samothrace.apps.argonautica',
     'rest_framework',
     'tinymce',
+    'import_export',
+    'simple_import',
 
     # uncomment in your greatest time of need!
     #NOTE: as of 8/12/2014 the pypi version does not support Natural Keys

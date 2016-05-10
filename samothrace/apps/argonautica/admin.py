@@ -54,8 +54,19 @@ class Places_ReferencedResource(resources.ModelResource):
     class Meta:
         model = Places_Referenced
         fields = ('id','place_referenced', 'line_number', 'type_of_reference', 'referenced_by', 'previous_place', 'next_place', 'ritual', 'ritual_deity', 'ritual_people', 'argonautica_edition')
-        
-class PersonAdmin(admin.ModelAdmin):
+
+class PersonResource(resources.ModelResource):
+    origin = fields.Field(
+        column_name='origin',
+        attribute='origin',
+        widget=ForeignKeyWidget(Site, 'name'))
+    class Meta:
+        model = Person
+        fields = ('id','name', 'origin')
+                
+class PersonAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = PersonResource
+    pass     
     list_display = ['name']
     search_fields = ['name']
 
