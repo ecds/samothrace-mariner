@@ -7,7 +7,7 @@ from rest_framework import routers, serializers, viewsets
 from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet
 from samothrace.apps.inscriptions.views import InscriptionViewSet
 from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet
-from samothrace.apps.argonautica.views import Argo_Edges
+from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2
 
 from django.contrib import admin
 admin.autodiscover()
@@ -32,6 +32,8 @@ urlpatterns = patterns('',
      url(r'^api/', include(router.urls)),
      url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
      url(r'^ArgoEdgeData/$', Argo_Edges, name="Argo Networks"),
+     url(r'^ArgoNodeDataSource/$', Argo_Nodes1, name="Argo Networks2"),
+     url(r'^ArgoNodeDataTarget/$', Argo_Nodes2, name="Argo Networks3"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),
