@@ -8,6 +8,7 @@ from samothrace.apps.sites.models import Site
 class Person(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     origin = models.ForeignKey(Site, null=True, blank=True)
+    source = models.CharField(max_length=255, blank=True, null=True, choices=(('Apollonius of Rhodes', 'Apollonius of Rhodes'),('[Orpheus]','[Orpheus]'),('Valerius Flaccus','Valerius Flaccus')))
 #    tribe = models.CharField(max_length=255, blank=True, null=True)
 
     def natural_key(self):
