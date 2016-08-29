@@ -67,7 +67,7 @@ class PersonResource(resources.ModelResource):
 class PersonAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PersonResource
     pass     
-    list_display = ['name']
+    list_display = ['name', 'source']
     search_fields = ['name']
 
 class StopsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
