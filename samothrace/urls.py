@@ -7,7 +7,7 @@ from rest_framework import routers, serializers, viewsets
 from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet
 from samothrace.apps.inscriptions.views import InscriptionViewSet
 from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet
-from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2
+from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
 
 from django.contrib import admin
 admin.autodiscover()
@@ -34,6 +34,11 @@ urlpatterns = patterns('',
      url(r'^ArgoEdgeData/$', Argo_Edges, name="Argo Networks"),
      url(r'^ArgoNodeDataSource/$', Argo_Nodes1, name="Argo Networks2"),
      url(r'^ArgoNodeDataTarget/$', Argo_Nodes2, name="Argo Networks3"),
+     url(r'^ArgoEdgeDataNext/$', Argo_EdgesNext, name="Argo Networks4"),
+     url(r'^ArgoEdgeDataPrevious/$', Argo_EdgesPrevious, name="Argo Networks5"),
+     url(r'^ArgoEdgeIndirectStops/$', Argo_EdgesIndirect, name="Argo Networks6"),
+     url(r'^ArgoEdgeIndirectStopsNext/$', Argo_EdgesIndirectNext, name="Argo Networks7"),
+     url(r'^ArgoNodeDataAllTarget/$', Argo_Nodes3_AllIndirectDirect, name="Argo Networks8"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),

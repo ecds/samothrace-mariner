@@ -37,3 +37,15 @@ def Argo_EdgesNext(request):
 def Argo_EdgesPrevious(request):
     ArgoEdgeDataPrevious = Stops.objects.values('id', 'place_of_stop__site_id', 'place_of_stop__name', 'place_of_stop__latitude', 'place_of_stop__longitude', 'previous_place__site_id', 'previous_place__name', 'previous_place__latitude', 'previous_place__longitude').filter(type_of_stop='direct').order_by('place_of_stop__site_id').distinct()
     return render_to_csv_response(ArgoEdgeDataPrevious, field_header_map={'id': 'record_id', 'previous_place__site_id': 'source', 'previous_place__name': 'source_name', 'previous_place__latitude': 'source_lat', 'previous_place__longitude': 'source_long', 'place_of_stop__site_id': 'target', 'place_of_stop__name': 'target_name', 'place_of_stop__latitude': 'target_lat', 'place_of_stop__longitude': 'target_long'})
+
+def Argo_EdgesIndirect(request):
+    ArgoEdgeIndirectStops = Stops.objects.values('id', 'place_of_stop__site_id', 'place_of_stop__name', 'place_of_stop__latitude', 'place_of_stop__longitude', 'previous_place__site_id', 'previous_place__name', 'previous_place__latitude', 'previous_place__longitude').filter(type_of_stop='indirect').order_by('place_of_stop__site_id').distinct()
+    return render_to_csv_response(ArgoEdgeIndirectStops, field_header_map={'id': 'record_id', 'previous_place__site_id': 'source', 'previous_place__name': 'source_name', 'previous_place__latitude': 'source_lat', 'previous_place__longitude': 'source_long', 'place_of_stop__site_id': 'target', 'place_of_stop__name': 'target_name', 'place_of_stop__latitude': 'target_lat', 'place_of_stop__longitude': 'target_long'})
+
+def Argo_EdgesIndirectNext(request):
+    ArgoEdgeIndirectStopsNext = Stops.objects.values('id', 'place_of_stop__site_id', 'place_of_stop__name', 'place_of_stop__latitude', 'place_of_stop__longitude', 'next_place__site_id', 'next_place__name', 'next_place__latitude', 'next_place__longitude').filter(type_of_stop='indirect').order_by('place_of_stop__site_id').distinct()
+    return render_to_csv_response(ArgoEdgeIndirectStopsNext, field_header_map={'id': 'record_id', 'place_of_stop__site_id': 'source', 'place_of_stop__name': 'source_name', 'place_of_stop__latitude': 'source_lat', 'place_of_stop__longitude': 'source_long', 'next_place__site_id': 'target', 'next_place__name': 'target_name', 'next_place__latitude': 'target_lat', 'next_place__longitude': 'target_long'})
+
+def Argo_Nodes3_AllIndirectDirect(request):
+    ArgoNodeDataAllTarget = Stops.objects.values('place_of_stop__site_id', 'place_of_stop__name', 'place_of_stop__latitude', 'place_of_stop__longitude').order_by('place_of_stop__site_id').distinct()
+    return render_to_csv_response(ArgoNodeDataAllTarget, field_header_map={'place_of_stop__site_id': 'Id', 'place_of_stop__name': 'name', 'place_of_stop__latitude': 'latitude', 'place_of_stop__longitude': 'longitude'})
