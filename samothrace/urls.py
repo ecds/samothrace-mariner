@@ -41,7 +41,7 @@ urlpatterns = patterns('',
      url(r'^ArgoEdgeIndirectStopsNext/$', Argo_EdgesIndirectNext, name="Argo Networks7"),
      url(r'^ArgoNodeDataAllTarget/$', Argo_Nodes3_AllIndirectDirect, name="Argo Networks8"),
      url(r'^InscriptionSiteData/$', Inscriptions_Nodes, name="Inscription Network1"),
-#     url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
+     url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),
