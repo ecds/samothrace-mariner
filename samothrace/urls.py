@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet
+from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesDistinct
 from samothrace.apps.inscriptions.views import InscriptionViewSet
 from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet
 from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
+
 
 from django.contrib import admin
 admin.autodiscover()
@@ -39,6 +40,8 @@ urlpatterns = patterns('',
      url(r'^ArgoEdgeIndirectStops/$', Argo_EdgesIndirect, name="Argo Networks6"),
      url(r'^ArgoEdgeIndirectStopsNext/$', Argo_EdgesIndirectNext, name="Argo Networks7"),
      url(r'^ArgoNodeDataAllTarget/$', Argo_Nodes3_AllIndirectDirect, name="Argo Networks8"),
+     url(r'^InscriptionSiteData/$', Inscriptions_Nodes, name="Inscription Network1"),
+#     url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),
