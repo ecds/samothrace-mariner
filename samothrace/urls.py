@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesDistinct, Inscriptions_NodesPeopleSites, links
+from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesDistinct, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct
 from samothrace.apps.inscriptions.views import InscriptionViewSet
 from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet
 from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
@@ -44,6 +44,7 @@ urlpatterns = patterns('',
      url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
      url(r'^InscriptionBothSiteData/$', Inscriptions_NodesPeopleSites, name="Inscription Network3"),
      url(r'^links/$', links, name="links"), 
+     url(r'^InscriptionPeopleSiteDistinct/$', Inscriptions_NodesPeopleSitesDistinct, name="Inscription Network4"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),
