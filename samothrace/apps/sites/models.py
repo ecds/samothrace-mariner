@@ -18,7 +18,7 @@ class Site(models.Model):
     alt_name = models.CharField(max_length=255, blank=True, null=True)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
-    elevation = models.IntegerField(max_length=4, blank=True, null=True)
+    elevation = models.IntegerField(blank=True, null=True)
     pleiades_url = models.URLField(max_length=200, blank=True, null=True)
     perseus_url = models.URLField(max_length=200, blank=True, null=True)
     caption = models.CharField(max_length=255, blank=True, null=True)
@@ -64,7 +64,7 @@ class Koina(models.Model):
     koina_id = models.CharField(max_length=10, primary_key=True, verbose_name="Koina ID")
     site = models.ForeignKey('Site', null=True)
     inscription = models.ForeignKey('inscriptions.Inscription')
-    member_count = models.IntegerField(max_length=4, blank=True, null=True)
+    member_count = models.IntegerField(blank=True, null=True)
     activities = models.CharField(max_length=255, blank=True)
     comments = models.TextField(blank=True)
 

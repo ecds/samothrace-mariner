@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesDistinct, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct
-from samothrace.apps.inscriptions.views import InscriptionViewSet
-from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet
+from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct
+from samothrace.apps.inscriptions.views import InscriptionViewSet, Inscriptions_Edges, Inscriptions_Edges2
+from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet, InscriptionPeople_Edges
 from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
 
 
@@ -41,10 +41,13 @@ urlpatterns = patterns('',
      url(r'^ArgoEdgeIndirectStopsNext/$', Argo_EdgesIndirectNext, name="Argo Networks7"),
      url(r'^ArgoNodeDataAllTarget/$', Argo_Nodes3_AllIndirectDirect, name="Argo Networks8"),
      url(r'^InscriptionSiteData/$', Inscriptions_Nodes, name="Inscription Network1"),
-     url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
+     #url(r'^InscriptionSiteDataDistinct/$', Inscriptions_NodesDistinct, name="Inscription Network2"),
      url(r'^InscriptionBothSiteData/$', Inscriptions_NodesPeopleSites, name="Inscription Network3"),
      url(r'^links/$', links, name="links"), 
      url(r'^InscriptionPeopleSiteDistinct/$', Inscriptions_NodesPeopleSitesDistinct, name="Inscription Network4"),
+     url(r'^InscriptionEdgeData/$', Inscriptions_Edges, name="Inscription Network 5"),
+     url(r'^InscriptionEdgesData/$', Inscriptions_Edges2, name="Inscription Network 6"),
+     url(r'^PeopleInscriptionEdges/$', InscriptionPeople_Edges, name="Inscription Network 7"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),

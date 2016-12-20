@@ -11,3 +11,4 @@ git+git://github.com/dracos/django-date-extensions.git
 six
 django-queryset-csv
 django-import-export
+django-mysql
