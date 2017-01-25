@@ -2,6 +2,7 @@ from django.db import models
 # Receive the pre_delete signal and delete the file associated with the model instance.
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
+from tinymce import models as tinymce_models
 
 from samothrace.apps.sites.models import Site
 
@@ -71,3 +72,15 @@ class ReferenceSite(models.Model):
 
 
     
+class Grant(models.Model):
+    granting_name = models.ForeignKey(Site, related_name='granting')
+    receiving_name = models.ForeignKey(Site, related_name='receiving')
+    number_of_people = models.IntegerField(blank=True, null=True)
+    inscription = models.CharField(max_length = 255, blank=True, null=True)
+    inscription_text = models.TextField(blank=True, null=True)
+    bibliographic = models.CharField(max_length = 255, blank=True, null=True, help_text="List Mack pages.")
+    date_range = models.CharField(max_length = 255, blank=True, null=True)
+    date_begin = models.IntegerField(blank=True, null=True)
+    date_end = models.IntegerField(blank=True, null=True)
+    inscriptionlink = models.URLField(max_length=200, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)

@@ -26,3 +26,10 @@ def InscriptionPeople_Edges(request):
     PeopleInscriptionEdges = Individual.objects.values('individual_id', 'name', 'site__name', 'name', 'inscription__name', 'inscription__individual__name', 'inscription__individual__site__name').filter(site__name__isnull=False).order_by('inscription__name')
     return render_to_csv_response(PeopleInscriptionEdges, field_header_map={'individual_id': 'id', 'name':'person1', 'site__name':'source', 'inscription__name':'inscription', 'inscription__individual__name':'person2', 'inscription__individual__site__name':'target'})
 # Getting there...
+
+
+def Bibliography(request):
+    return  render(request, 'biblio.html')
+
+def HowToGraph(request):
+    return  render(request, 'how_graph.html')

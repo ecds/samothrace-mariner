@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct
-from samothrace.apps.inscriptions.views import InscriptionViewSet, Inscriptions_Edges, Inscriptions_Edges2
-from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet, InscriptionPeople_Edges
+from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct, Grant_Edges2, Grant_Edges3, Grant_Nodes1, Grant_Nodes2
+from samothrace.apps.inscriptions.views import InscriptionViewSet, Inscriptions_Edges, Inscriptions_Edges2, Grant_Edges1, Grant_Edges4
+from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet, InscriptionPeople_Edges, Bibliography, HowToGraph
 from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
 
 
@@ -48,6 +48,14 @@ urlpatterns = patterns('',
      url(r'^InscriptionEdgeData/$', Inscriptions_Edges, name="Inscription Network 5"),
      url(r'^InscriptionEdgesData/$', Inscriptions_Edges2, name="Inscription Network 6"),
      url(r'^PeopleInscriptionEdges/$', InscriptionPeople_Edges, name="Inscription Network 7"),
+     url(r'^GrantEdgesGrant/$', Grant_Edges1, name="Grant Network 1"),
+     url(r'^GrantEdgesRec/$', Grant_Edges2, name="Grant Network 2"),
+     url(r'^GrantEdgesOther/$', Grant_Edges3, name="Grant Network 3"),
+     url(r'^GrantEdgesReceivings/$', Grant_Edges4, name="Grant Network 4"),
+     url(r'^biblio/$', Bibliography, name="Bibliography"), 
+     url(r'^how_graph/$', HowToGraph, name="HowToGraph"),
+     url(r'^GrantNodesGranting/$', Grant_Nodes1, name="Grant Nodes 1"),
+     url(r'^GrantNodesReceiving/$', Grant_Nodes2, name="Grant Nodes 2"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),

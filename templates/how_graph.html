@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_modify bootstrapped_goodies_tags %}
+
+{% block extrahead %}{{ block.super }}
+{% url 'admin:jsi18n' as jsi18nurl %}
+<script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+{{ media }}
+{% endblock %}
+
+{% block content %}
+<p><h1><strong>Samothracian Networks – </h1><h2>Samothracian Inscriptions Network Graph Exported from Django</strong></h2><br/>
+In order to create a network graph with the newest Samothracian Networks data in Gephi, export in the following order from the Samothracian Networks Django Database. <br/>
+1) Go to “Data Download” Links Page. <br/>
+2) Get the “Nodes” data from the first two Inscriptions export files. <br/>
+3) Get the “Edges” data from the Inscriptions – Edges – Individual cities to Individual cities by Inscription download (csv). <br/>
+5) THEN: Open the csv, delete the second “Person1” column.  <br/>
+a. Sort by ‘Target’ column, and delete the records with a blank Target column (at the bottom). <br/>
+b. Save the new file.<br/>
+6) Go into Gephi and import the two nodes files, and the new edges file.<br/>  
+a. Remember to make “latitude” and “longitude” DOUBLE fields (not string or float) so that they will work as GPS points.<br/>
+7) Save the file.   <br/>
+a. This file has parallel edges – and all participating names. <br/>
+b. Click “Preview” to prepare for graph file export. <br/>
+c. Export a gexf file.<br/>
+8) Open the Gexf file.  Choose “undirected”.<br/>
+a. This file has no parallel edges, and Degree will work correctly (though it does not have all participating names). </p>
+<br/>
+<br/>
+<h2>Mack Grants Network Graph Exported from Django</strong></h2><br/>
+In order to create a network graph with the newest Mack Grant Networks data in Gephi, export in the following order from the Samothracian Networks Django Database. <br/>
+1) Go to “Data Download” Links Page. <br/>
+2) Get the “Nodes” data from the first two Inscriptions export files. <br/>
+3) Get the “Edges” data from the Grants - Edges - Receiving to Receiving cities download (csv). <br/>
+a. This will only have the network among receiving cities.  If you also want the granting to receiving city edges, also download the Grants - Edges - Granting to Receiving cities download (csv). <br/>
+4) Go into Gephi and import the two nodes files, and the two edges files.<br/>  
+a. Remember to make “latitude” and “longitude” DOUBLE fields (not string or float) so that they will work as GPS points.<br/>
+5) Save the file.   <br/>
+a. This file has parallel edges. <br/>
+b. Click “Preview” to prepare for graph file export. <br/>
+c. Export a gexf file.<br/>
+6) Open the Gexf file.  Choose “undirected”.<br/>
+a. This file has no parallel edges, and Degree will work correctly. </p>
+<br/>
+<br/>
+<a href="http://samothraciannetworks.digitalscholarship.emory.edu/admin/">Back to Admin</a></p>
+{% endblock %}

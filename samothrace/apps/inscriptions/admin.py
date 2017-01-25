@@ -2,9 +2,12 @@ from django.contrib import admin
 from django.conf import settings
 
 from samothrace.apps.admin.models import LinkedInline, get_admin_url
-from samothrace.apps.inscriptions.models import Inscription, ReferenceSite
+from samothrace.apps.inscriptions.models import Inscription, ReferenceSite, Grant
 from samothrace.apps.people.models import Individual
-from samothrace.apps.sites.models import Koina
+from samothrace.apps.sites.models import Koina, Site
+from import_export import resources, fields
+from import_export.admin import ImportExportModelAdmin
+from import_export.widgets import ForeignKeyWidget, ManyToManyWidget
 
 class IndividualInline(LinkedInline):
     model = Individual
@@ -44,7 +47,25 @@ class InscriptionAdmin(admin.ModelAdmin):
         KoinaInline
         ]
 
+class GrantResource(resources.ModelResource):
+    granting_name = fields.Field(
+        column_name='granting_name',
+        attribute='granting_name',
+        widget=ForeignKeyWidget(Site, 'name'))
+    receiving_name = fields.Field(
+        column_name='receiving_name',
+        attribute='receiving_name',
+        widget=ForeignKeyWidget(Site, 'name'))
+    class Meta:
+        model = Grant
+        fields = ('granting_name', 'receiving_name', 'id', 'number_of_people', 'inscription', 'inscription_text', 'bibliographic', 'date_range', 'date_begin', 'date_end', 'inscriptionlink', 'notes')
 
+class GrantAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = GrantResource
+    pass
+    list_display = ['id', 'inscription', 'number_of_people', 'date_range', 'bibliographic']
+    search_fields = ['inscription', 'bibliographic']
     
 admin.site.register(Inscription, InscriptionAdmin)
+admin.site.register(Grant, GrantAdmin)
 
