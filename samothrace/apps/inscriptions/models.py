@@ -65,10 +65,10 @@ class ReferenceSite(models.Model):
     site = models.ForeignKey(Site)
 
     def natural_key(self):
-        return (self.inscription.id, self.site.id)
+        return (self.inscription.inscription_id, self.site.site_id)
     
     def __unicode__(self):
-        return '%s %s' % (self.site.id, self.site.name)
+        return '%s %s' % (self.site.site_id, self.site.name)
 
 
     
