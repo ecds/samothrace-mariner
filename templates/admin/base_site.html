@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load i18n  %}
+
+   {% block extrastyle %}
+     <style type="text/css">
+       .breadcrumb { margin: 70px 0px 10px 0px !important; }
+     </style>
+{% endblock %}
+
+{% block title %} {% trans 'Samothrace' %} | {{ title }} {% endblock %}
+
+{% block branding %}
+
+<h1 id="site-name">{% trans 'Samothrace Administration' %} | <a href="/admin/logout/">Logout</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

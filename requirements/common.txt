@@ -1,0 +1,14 @@
+Django>==3.0
+mysql-python
+#django-admin-bootstrapped<=2.4
+#django-bootstrap3
+pillow
+#djangorestframework
+django-tinymce
+
+#partial dates
+django-date-extensions
+six
+django-queryset-csv
+django-import-export
+mysqlclient

@@ -1,0 +1,33 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls  %}
+
+{% block extrahead %}{{ block.super }}
+{% url 'admin:jsi18n' as jsi18nurl %}
+<script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+{{ media }}
+{% endblock %}
+
+{% block content %}
+
+<p><h1><strong>Links to download Data</strong></h1></p>
+<p><a href="/InscriptionSiteData">Inscriptions - Nodes - Cities the Inscriptions are from </a></p>
+<p><a href="/InscriptionBothSiteData">Inscriptions - Nodes - Cities the people are from </a></p>
+<p><a href="/InscriptionEdgeData">Inscriptions - Edges - Find spots to Individuals' cities</a></p>
+<p><a href="/PeopleInscriptionEdges">Inscriptions - Edges - Individual cities to Individual cities by Inscription</a></p>
+<p><a href="/PeopleInscriptionEdgesTime">Inscription - Edges with Time data - Individual cities to Individual cities by Inscription</a></p>
+<p><a href="/ArgoEdgeData">Argonautica - Edges - Crew origin cities to stops </a></p>
+<p><a href="/ArgoNodeDataSource">Argonautica - Nodes 1 - crew origin nodes (Direct stops)</a></p>
+<p><a href="/ArgoNodeDataTarget">Argonautica - Nodes part 2 - place of stop nodes (Direct stops)</a></p>
+<p><a href="/ArgoEdgeDataNext">Argonautica - Edges from (direct) stop to next stop </a></p>
+<p><a href="/ArgoEdgeDataPrevious">Argonautica - Edges from (direct) stop to previous stop (this and previous link are not both necessary)</a></p>
+<p><a href="/ArgoEdgeIndirectStops">Argonautica - Edges indirect stop to previous stop </a></p>
+<p><a href="/ArgoEdgeIndirectStopsNext">Argonautica - Edges indirect stop to next stop (this and previous linke ARE both necessary)</a></p>
+<p><a href="/ArgoNodeDataAllTarget">Argonautica - Nodes - All stop city nodes  (Direct and Indirect)</a></p>
+<p><a href="/GrantEdgesOther">Grants - Edges - Granting to Receiving cities</a></p>
+<p><a href="/GrantEdgesRec">Grants - Edges - Receiving to Receiving cities</a></p>
+<p><a href="/GrantNodesGranting">Grants - Nodes - Granting cities</a></p>
+<p><a href="/GrantNodesReceiving">Grants - Nodes - Receiving cities</a></p>
+<br/>
+<br/>
+<a href="/admin/">Back to Admin</a></p>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+{% url 'admin:jsi18n' as jsi18nurl %}
+<script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+{{ media }}
+{% endblock %}
+
+{% block content %}
+<p><h1><strong>Bibliography</strong></h1><br/></p>
+<br/>
+<br/>
+<p  style="margin-left:.5in;text-indent:-.5in">Cole, Susan Guettel.  1984,  Theoi Megaloi: the cult of the great gods at Samothrace / Susan Guettel Cole  E.J. Brill Leiden.<br/></p>
+<p  style="margin-left:.5in;text-indent:-.5in">Dimitrova, Nora M. 2008, Theoroi and Initiates in Samothrace: The Epigraphical Evidence. Hesperia Supplement, 37.   Princeton:  American School of Classical Studies at Athens.<br/></p>
+<p  style="margin-left:.5in;text-indent:-.5in">Mack, William. 2015, Proxeny and Polis: Institutional Networks in the Ancient Greek World. Oxford: Oxford University Press. Oxford Scholarship Online, 2015.<br/></p>
+<br/>
+<br/>
+<p><a href="/admin/">Back to Admin</a></p>
+{% endblock %}
