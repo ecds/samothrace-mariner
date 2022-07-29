@@ -1,5 +1,0 @@
-===========
-DEPLOYNOTES
-===========
-
-.. include:: ../DEPLOYNOTES.rst
