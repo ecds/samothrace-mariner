@@ -5935,3 +5935,7 @@ select[multiple] {
 .module .section {
   font-size: 1.5em;
 }
+
+.submit-row a.deletelink {
+  display: inline;
+}
