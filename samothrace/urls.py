@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct, Grant_Edges2, Grant_Edges3, Grant_Nodes1, Grant_Nodes2
+from samothrace.apps.sites.views import SiteViewSet, MarkerViewSet, KoinaViewSet, Inscriptions_Nodes, Inscriptions_NodesPeopleSites, links, Inscriptions_NodesPeopleSitesDistinct, Grant_Edges2, Grant_Edges3, Grant_Nodes1, Grant_Nodes2, Networks_Game
 from samothrace.apps.inscriptions.views import InscriptionViewSet, Inscriptions_Edges, Inscriptions_Edges2, Grant_Edges1, Grant_Edges4
 from samothrace.apps.people.views import IndividualViewSet, RoleViewSet, PriesthoodViewSet, InscriptionPeople_Edges, Bibliography, HowToGraph
 from samothrace.apps.argonautica.views import Argo_Edges, Argo_Nodes1, Argo_Nodes2, Argo_EdgesNext, Argo_EdgesPrevious, Argo_EdgesIndirect, Argo_EdgesIndirectNext, Argo_Nodes3_AllIndirectDirect
@@ -56,6 +56,7 @@ urlpatterns = patterns('',
      url(r'^how_graph/$', HowToGraph, name="HowToGraph"),
      url(r'^GrantNodesGranting/$', Grant_Nodes1, name="Grant Nodes 1"),
      url(r'^GrantNodesReceiving/$', Grant_Nodes2, name="Grant Nodes 2"),
+     url(r'^NetworksGameID/$', Networks_Game, name="Networks_Game"),
 )
 
 urlpatterns+=url(r'^simple_import/', include('simple_import.urls')),

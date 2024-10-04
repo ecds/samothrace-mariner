@@ -63,7 +63,7 @@ class GrantResource(resources.ModelResource):
 class GrantAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = GrantResource
     pass
-    list_display = ['id', 'inscription', 'number_of_people', 'date_range', 'bibliographic']
+    list_display = ['id', 'inscription', 'number_of_people', 'date_range', 'date_begin', 'date_end', 'bibliographic']
     search_fields = ['inscription', 'bibliographic']
     
 admin.site.register(Inscription, InscriptionAdmin)

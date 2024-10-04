@@ -97,4 +97,11 @@ def Grant_Nodes2(request):
     GrantNodesReceiving = Site.objects.values('name', 'latitude', 'longitude', 'batlas', 'pleiades_url', 'perseus_url', 'caption', 'paragraph').filter(receiving__id__isnull=False).distinct().order_by('name')
     return render_to_csv_response(GrantNodesReceiving)
        
+def Networks_Game(request):
+    NetworksGameID = Site.objects.values('site_id', 'name').filter(granting__id__isnull=False, granting__date_begin__lte = -150, granting__date_end__gte = -250).annotate(Cities=GroupConcat('granting__receiving_name__site_id', distinct=True)).order_by('name')
+    return render_to_csv_response(NetworksGameID, field_header_map={'site_id':'NetID', 'name':'Net_Name', 'Cities':'Included_City'})
+    
+    
+    
+    
     

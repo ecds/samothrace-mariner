@@ -3,8 +3,9 @@ from django.conf import settings
 
 from samothrace.apps.admin.models import LinkedInline, get_admin_url
 from samothrace.apps.sites.models import Site, Marker, Koina, Ancient_Sources
-from samothrace.apps.inscriptions.models import Inscription
+from samothrace.apps.inscriptions.models import Inscription, Grant
 from samothrace.apps.people.models import Individual
+from samothrace.apps.argonautica.models import Stops, Places_Referenced, Person
 from import_export import resources, fields
 from import_export.admin import ImportExportModelAdmin
 from import_export.widgets import ForeignKeyWidget, ManyToManyWidget
@@ -30,6 +31,56 @@ class KoinaInline(LinkedInline):
     verbose_name_plural = "Related Koina"
     can_delete = False
 
+class IndividualInline(LinkedInline):
+    model = Individual
+    extra = 0
+    fields = ['individual_id', 'inscription']
+    admin_model_parent = "people"
+    admin_model_path = "individual"
+    fk_name = 'site' #or 'world', as applicable.
+    verbose_name_plural = "Related Individuals"
+    can_delete = False
+
+class IndividualOriginInline(LinkedInline):
+    model = Individual
+    extra = 0
+    fields = ['individual_id', 'inscription']
+    admin_model_parent = "people"
+    admin_model_path = "individual"
+    fk_name = 'site_origin' #or 'world', as applicable.
+    verbose_name_plural = "Related Individuals Site of Origin"
+    can_delete = False
+
+class StopInline(LinkedInline):
+    model = Stops
+    extra = 0
+    fields = ['line_number', 'type_of_stop']
+    admin_model_parent = "argonautica"
+    admin_model_path = "stop"
+    fk_name = 'place_of_stop' #or 'world', as applicable.
+    verbose_name_plural = "Related Argonautic Stops"
+    can_delete = False
+
+class Places_ReferencedInline(LinkedInline):
+    model = Places_Referenced
+    extra = 0
+    fields = ['line_number', 'type_of_reference']
+    admin_model_parent = "argonautica"
+    admin_model_path = "places_referenced"
+    fk_name = 'place_referenced' #or 'world', as applicable.
+    verbose_name_plural = "Related Argonautic Referenced Places"
+    can_delete = False
+
+class PersonInline(LinkedInline):
+    model = Person
+    extra = 0
+    fields = ['name', 'source']
+    admin_model_parent = "argonautica"
+    admin_model_path = "person"
+    fk_name = 'origin' #or 'world', as applicable.
+    verbose_name_plural = "Related Argonautic People Origin"
+    can_delete = False
+
 
 class MarkerInline(LinkedInline):
     model = Marker
@@ -50,7 +101,27 @@ class InscriptionInline(LinkedInline):
     verbose_name_plural = "Related Inscriptions"
     can_delete = False
 
-    
+class GrantInline(LinkedInline):
+    model = Grant
+    extra = 0
+    fields = ['inscription']
+    admin_model_parent = "inscriptions"
+    admin_model_path = "grant"
+    fk_name = 'granting_name' #or 'world', as applicable.
+    verbose_name_plural = "Related Grants Granting"
+    can_delete = False
+
+class Grant2Inline(LinkedInline):
+    model = Grant
+    extra = 0
+    fields = ['inscription']
+    admin_model_parent = "inscriptions"
+    admin_model_path = "grant"
+    fk_name = 'receiving_name' #or 'world', as applicable.
+    verbose_name_plural = "Related Grants Receiving"
+    can_delete = False
+
+   
 class SiteResource(resources.ModelResource):
     class Meta:
         model = Site
@@ -67,9 +138,15 @@ class SiteAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ['site_id', 'name', 'mod_name', 'alt_name', 'natural_marker']
     inlines = [
         InscriptionInline,
-        #IndividualInline,
         MarkerInline,
-        KoinaInline
+        KoinaInline,
+        IndividualOriginInline,
+        IndividualInline,
+        StopInline,
+        Places_ReferencedInline,
+        PersonInline,
+        GrantInline,
+        Grant2Inline
         ]
 
 admin.site.register(Site, SiteAdmin)
