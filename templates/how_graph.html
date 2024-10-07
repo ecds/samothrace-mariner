@@ -18,8 +18,9 @@ a. Sort by ‘Target’ column, and delete the records with a blank Target colum
 b. Save the new file.<br/>
 5) Go into Gephi and import the two nodes files, and the new edges file.<br/>
 a. Remember to make “latitude” and “longitude” DOUBLE fields (not string or float) so that they will work as GPS points.<br/>
+b. *Important* Uncheck the Id column for the EDGES file. This is necessary to get all the edges.<br/>
 6) Save the file.   <br/>
-a. This file has parallel edges – and all participating names. <br/>
+a. This file has parallel edges – and all participating names. *NOTE* If you use the 'Edges with Time data', people are listed uniquely by *ROLE* not by name (so someone with two roles will be listed twice). <br/>
 b. Click “Preview” to prepare for graph file export. <br/>
 c. Export a gexf file.<br/>
 7) Open the Gexf file.  Choose “undirected”.<br/>
