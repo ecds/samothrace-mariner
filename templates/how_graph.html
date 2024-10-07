@@ -19,12 +19,23 @@ b. Save the new file.<br/>
 5) Go into Gephi and import the two nodes files, and the new edges file.<br/>
 a. Remember to make “latitude” and “longitude” DOUBLE fields (not string or float) so that they will work as GPS points.<br/>
 b. *Important* Uncheck the Id column for the EDGES file. This is necessary to get all the edges.<br/>
+c. Use "do not merge" to get the parallel edges and all participating names.<br/>
 6) Save the file.   <br/>
 a. This file has parallel edges – and all participating names. *NOTE* If you use the 'Edges with Time data', people are listed uniquely by *ROLE* not by name (so someone with two roles will be listed twice). <br/>
 b. Click “Preview” to prepare for graph file export. <br/>
 c. Export a gexf file.<br/>
 7) Open the Gexf file.  Choose “undirected”.<br/>
-a. This file has no parallel edges, and Degree will work correctly (though it does not have all participating names). </p>
+a. This file has no parallel edges, and Degree will work correctly (though it does not have all participating names). <br/>
+<strong>Alternate option to get one edge per city (rather than per person):</strong><br/>
+5) Follow the same steps - but at step 5 - but "merge" the edges file.<br/>
+a. Remember to make “latitude” and “longitude” DOUBLE fields (not string or float) so that they will work as GPS points.<br/>
+b. *Important* Uncheck the Id column for the EDGES file. This is necessary to get all the edges.<br/>
+c. Use 'SUM' to merge the edges. This will work for the Individual to Individual With OR Without Time data.<br/>
+6) Export the edges file to csv.<br/>
+7) In the CSV - remove the edge "Weight" - by emptying the column - but leave the column.<br/>
+8) Clear all Edges in Gephi - and reimport the new CSV.<br/>
+9) Save the file.<br/>
+a. This file has no parallel edges. </p>
 <br/>
 <br/>
 <h2>Mack Grants Network Graph Exported from Django</strong></h2><br/>
@@ -41,6 +52,7 @@ b. If the file DOES have parallel edges, do the following:  Click “Preview” 
 c. Export a gexf file.<br/>
 6) Open the Gexf file.  Choose “undirected”.<br/>
 a. This file has no parallel edges, and Degree will work correctly. </p>
+
 <br/>
 <br/>
 <a href="/admin/">Back to Admin</a></p>
